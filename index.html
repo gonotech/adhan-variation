@@ -98,8 +98,8 @@
             <p>Created with 
                 <a href="https://github.com/batoulapps/adhan-js" target="_blank">adhan-js</a>, 
                 <a href="https://www.chartjs.org" target="_blank">Chart.js</a>, 
-                ChatGPT, and ❤️ to visualize prayer time variation throughout the year.
-            </p>
+                ChatGPT, and ❤️ to visualize prayer time variation throughout the year.</p>
+            <p>Timezone: <span id="timezone"></span></p> <!-- Added timezone -->
         </div>
     </div>
 
@@ -188,8 +188,8 @@
                     responsive: true,
                     plugins: {
                         title: {
-                            display: true,
-                            text: `Adhan (Muslim Prayer Times) on 15th of Each Month, ${currentYear}` // Display the current year in the title
+                            display: false,
+                            text: `Adhan (Muslim Prayer Times) variation throughout the year, ${currentYear}` // Display the current year in the title
                         }
                     },
                     scales: {
@@ -212,6 +212,10 @@
                     }
                 }
             });
+
+            // Set timezone information
+            let timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            document.getElementById('timezone').textContent = timezone;
         }
 
         // Initial chart rendering
